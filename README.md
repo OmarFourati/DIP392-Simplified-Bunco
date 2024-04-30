@@ -7,4 +7,4 @@ Goal : Simulate the developement of a game/software from A to Z as a software en
 The detailed documentation of the project can be found [here](/project_docs/DIP392_Report.docx).
 
 A Wireframe for the project look like this :
-(/my-bunco-game/WireframeBunco.png)
+![Wireframe](my-bunco-game/WireframeBunco.png)
