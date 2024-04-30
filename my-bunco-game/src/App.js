@@ -1,11 +1,13 @@
-import logo from "./logo.svg";
 import "./App.css";
+import MainFrame from "./components/MainFrame/MainFrame";
+import DiceRollArea from "./components/DiceRollArea/DiceRollArea";
+import FinalScoreTable from "./components/FinalScoreTable/FinalScoreTable";
+import GameBoard from "./components/GameBoard/GameBoard";
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
