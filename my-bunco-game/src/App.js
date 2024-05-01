@@ -5,31 +5,28 @@ import { FaDiceD20 } from "react-icons/fa";
 import DiceRollArea from "./components/DiceRollArea/DiceRollArea";
 import FinalScoreTable from "./components/FinalScoreTable/FinalScoreTable";
 import GameBoard from "./components/GameBoard/GameBoard";
-import CreateUsername from "./components/Modals/CreateUsername";
+import CreateNewname from "./components/Modals/CreateNewGame";
 import GameRulesModal from "./components/Modals/GameRulesModal";
-import SelectDifficultyModal from "./components/Modals/SelectDifficultyModal"; // Import SelectDifficultyModal
 // App.js
 
 function App() {
-  const [gameStarted, setGameStarted] = useState(false);
+  const [NewGameModal, setNewGameModal] = useState(false);
   const [showRulesModal, setShowRulesModal] = useState(false);
   const [showDifficultyModal, setShowDifficultyModal] = useState(false);
   const [selectedDifficulty, setSelectedDifficulty] = useState(null);
   const [username, setUsername] = useState(""); // State to store the username
-  const handleStartGame = (username) => {
-    // Perform game start logic (e.g., set gameStarted to true, save username)
-    console.log(
-      `Game started with username: ${username} and difficulty: ${selectedDifficulty}`
-    );
+  const handleStartGame = (username, difficulty) => {
     setUsername(username);
-    setSelectedDifficulty(selectedDifficulty);
-    setGameStarted(false);
-    //
+    setSelectedDifficulty(difficulty);
+    setNewGameModal(false);
+    console.log(
+      `Game started with username: ${username} and difficulty: ${difficulty}`
+    );
   };
 
   const closeModal = () => {
     // Implement closing modal logic
-    setGameStarted(false);
+    setNewGameModal(false);
     setShowRulesModal(false);
     setShowDifficultyModal(false);
   };
@@ -55,7 +52,7 @@ function App() {
 
         {/* Buttons */}
         <div className="buttons">
-          <button onClick={() => setGameStarted(true)} className="button">
+          <button onClick={() => setNewGameModal(true)} className="button">
             New Game
           </button>
           <button onClick={() => setShowRulesModal(true)} className="button">
@@ -79,19 +76,13 @@ function App() {
         <button className="button">Show Final Result</button>
       </footer>
 
-      <CreateUsername
-        isOpen={gameStarted && !showRulesModal && !showDifficultyModal}
+      <CreateNewname
+        isOpen={NewGameModal && !showRulesModal && !showDifficultyModal}
         onClose={closeModal}
         onStartGame={handleStartGame}
       />
 
       <GameRulesModal isOpen={showRulesModal} onClose={closeModal} />
-
-      <SelectDifficultyModal
-        isOpen={showDifficultyModal}
-        onClose={closeModal}
-        onSelectDifficulty={handleSelectDifficulty}
-      />
 
       {/* Other components can be rendered conditionally based on gameStarted */}
       {/* {gameStarted && (
