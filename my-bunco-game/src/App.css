@@ -3,7 +3,7 @@
 
 /* General styles */
 .App {
-  background-color: #282c34;
+  background-color: #171e2b;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -55,7 +55,7 @@
 }
 
 .button:hover {
-  background-color: #00a0d2;
+  background-color: #ff7f50;
 }
 
 .player-name {
