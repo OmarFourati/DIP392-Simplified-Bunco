@@ -33,7 +33,9 @@ const GameRulesModal = ({ isOpen, onClose }) => {
             <li>The game typically consists of 6 rounds.</li>
           </ul>
         </div>
-        <button onClick={onClose}>Close</button>
+        <button className="close-button" onClick={onClose}>
+          Close
+        </button>
       </div>
     </div>
   );

@@ -12,7 +12,6 @@ import GameRulesModal from "./components/Modals/GameRulesModal";
 function App() {
   const [NewGameModal, setNewGameModal] = useState(false);
   const [showRulesModal, setShowRulesModal] = useState(false);
-  const [showDifficultyModal, setShowDifficultyModal] = useState(false);
   const [selectedDifficulty, setSelectedDifficulty] = useState(null);
   const [username, setUsername] = useState(""); // State to store the username
   const handleStartGame = (username, difficulty) => {
@@ -28,7 +27,6 @@ function App() {
     // Implement closing modal logic
     setNewGameModal(false);
     setShowRulesModal(false);
-    setShowDifficultyModal(false);
   };
 
   const handleSelectDifficulty = (difficulty) => {
@@ -58,12 +56,6 @@ function App() {
           <button onClick={() => setShowRulesModal(true)} className="button">
             Game Rules
           </button>
-          <button
-            onClick={() => setShowDifficultyModal(true)}
-            className="button"
-          >
-            Difficulty
-          </button>
           <p className="player-name">Player : {username}</p>
         </div>
       </header>
@@ -77,7 +69,7 @@ function App() {
       </footer>
 
       <CreateNewname
-        isOpen={NewGameModal && !showRulesModal && !showDifficultyModal}
+        isOpen={NewGameModal && !showRulesModal}
         onClose={closeModal}
         onStartGame={handleStartGame}
       />
