@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import './CreateUsername.css';
+import React, { useState } from "react";
+import "./CreateUsername.css";
 
 const CreateUsername = ({ isOpen, onClose, onStartGame }) => {
-  const [username, setUsername] = useState('');
+  const [username, setUsername] = useState("");
 
   const handleInputChange = (event) => {
     setUsername(event.target.value);
@@ -17,16 +17,24 @@ const CreateUsername = ({ isOpen, onClose, onStartGame }) => {
   return (
     <div className="modal-overlay">
       <div className="modal">
-        <h2>Welcome to Simplified Bunco!</h2>
-        <p>Please enter your username:</p>
-        <input
-          type="text"
-          placeholder="Enter your username"
-          value={username}
-          onChange={handleInputChange}
-        />
-        <button onClick={handleStartGame}>Start Game</button>
-        <button onClick={onClose}>Close</button>
+        <div className="modal-header">
+          <span className="close-icon" onClick={onClose}>
+            ×
+          </span>
+          <h2>Welcome to Simplified Bunco!</h2>
+        </div>
+        <div className="modal-body">
+          <p>Please enter a username:</p>
+          <input
+            type="text"
+            placeholder=""
+            value={username}
+            onChange={handleInputChange}
+          />
+        </div>
+        <div className="modal-footer">
+          <button onClick={handleStartGame}>Start Game</button>
+        </div>
       </div>
     </div>
   );

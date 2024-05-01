@@ -15,13 +15,16 @@ function App() {
   const [showRulesModal, setShowRulesModal] = useState(false);
   const [showDifficultyModal, setShowDifficultyModal] = useState(false);
   const [selectedDifficulty, setSelectedDifficulty] = useState(null);
-
+  const [username, setUsername] = useState(""); // State to store the username
   const handleStartGame = (username) => {
     // Perform game start logic (e.g., set gameStarted to true, save username)
     console.log(
       `Game started with username: ${username} and difficulty: ${selectedDifficulty}`
     );
-    setGameStarted(true);
+    setUsername(username);
+    setSelectedDifficulty(selectedDifficulty);
+    setGameStarted(false);
+    //
   };
 
   const closeModal = () => {
@@ -52,14 +55,20 @@ function App() {
 
         {/* Buttons */}
         <div className="buttons">
-          <button className="button">New Game</button>
-          <button className="button">Game Rules</button>
-          <button className="button">Difficulty</button>
-          <p className="player-name">Player : </p>
+          <button onClick={() => setGameStarted(true)} className="button">
+            New Game
+          </button>
+          <button onClick={() => setShowRulesModal(true)} className="button">
+            Game Rules
+          </button>
+          <button
+            onClick={() => setShowDifficultyModal(true)}
+            className="button"
+          >
+            Difficulty
+          </button>
+          <p className="player-name">Player : {username}</p>
         </div>
-        <button onClick={() => setGameStarted(true)}>Start Game</button>
-        <button onClick={() => setShowRulesModal(true)}>View Game Rules</button>
-        <button onClick={() => setShowDifficultyModal(true)}>Difficulty</button>
       </header>
 
       {/* Main Content */}
@@ -85,13 +94,13 @@ function App() {
       />
 
       {/* Other components can be rendered conditionally based on gameStarted */}
-      {gameStarted && (
+      {/* {gameStarted && (
         <>
           <DiceRollArea />
           <FinalScoreTable />
           <GameBoard />
         </>
-      )}
+      )} */}
     </div>
   );
 }
