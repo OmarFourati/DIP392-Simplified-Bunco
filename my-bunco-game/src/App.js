@@ -7,9 +7,11 @@ import FinalScoreTable from "./components/FinalScoreTable/FinalScoreTable";
 import GameBoard from "./components/GameBoard/GameBoard";
 import CreateNewname from "./components/Modals/CreateNewGame";
 import GameRulesModal from "./components/Modals/GameRulesModal";
+import Container from "@mui/material/Container";
 // App.js
 
 function App() {
+  const [startGame, setStartGame] = useState(true);
   const [NewGameModal, setNewGameModal] = useState(false);
   const [showRulesModal, setShowRulesModal] = useState(false);
   const [selectedDifficulty, setSelectedDifficulty] = useState(null);
@@ -18,8 +20,9 @@ function App() {
     setUsername(username);
     setSelectedDifficulty(difficulty);
     setNewGameModal(false);
+    setStartGame(true);
     console.log(
-      `Game started with username: ${username} and difficulty: ${difficulty}`
+      `Game started with username: ${username} and difficulty: ${difficulty} and ${startGame}`
     );
   };
 
@@ -63,10 +66,6 @@ function App() {
       {/* Main Content */}
       {/* Include MainFrame, DiceRollArea, FinalScoreTable, GameBoard components here */}
       {/* Footer */}
-      <footer className="footer">
-        <button className="button">Next Round</button>
-        <button className="button">Show Final Result</button>
-      </footer>
 
       <CreateNewname
         isOpen={NewGameModal && !showRulesModal}
@@ -77,13 +76,15 @@ function App() {
       <GameRulesModal isOpen={showRulesModal} onClose={closeModal} />
 
       {/* Other components can be rendered conditionally based on gameStarted */}
-      {/* {gameStarted && (
+      {startGame && (
         <>
           <DiceRollArea />
-          <FinalScoreTable />
-          <GameBoard />
         </>
-      )} */}
+      )}
+      <footer className="footer">
+        <button className="button">Next Round</button>
+        <button className="button">Show Final Result</button>
+      </footer>
     </div>
   );
 }
