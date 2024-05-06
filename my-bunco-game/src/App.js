@@ -21,9 +21,6 @@ function App() {
     setSelectedDifficulty(difficulty);
     setNewGameModal(false);
     setStartGame(true);
-    console.log(
-      `Game started with username: ${username} and difficulty: ${difficulty} and ${startGame}`
-    );
   };
 
   const closeModal = () => {
@@ -77,12 +74,14 @@ function App() {
 
       {/* Other components can be rendered conditionally based on gameStarted */}
       {startGame && (
-        <>
+        <div style={{ marginTop: "10px" }}>
           <DiceRollArea />
-        </>
+          <div style={{ marginTop: "20px" }}>
+            <GameBoard />
+          </div>
+        </div>
       )}
       <footer className="footer">
-        <button className="button">Next Round</button>
         <button className="button">Show Final Result</button>
       </footer>
     </div>

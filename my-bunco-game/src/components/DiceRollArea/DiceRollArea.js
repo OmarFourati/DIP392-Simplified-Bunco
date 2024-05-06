@@ -78,7 +78,7 @@ const DiceRollArea = () => {
       sx={{
         backgroundColor: "white",
         borderRadius: "10px", // Adjust the border radius as needed
-        padding: "0px 5px 15px 7px", // Adjust the padding as needed
+        padding: "0px 5px 10px 5px", // Adjust the padding as needed
         width: "100%", // Take full width of the parent container
       }}
     >
@@ -124,7 +124,5 @@ const DiceRollArea = () => {
 };
 
 DiceRollArea.propTypes = {};
-
-DiceRollArea.defaultProps = {};
 
 export default DiceRollArea;
