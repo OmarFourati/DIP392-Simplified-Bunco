@@ -12,10 +12,28 @@ import Container from "@mui/material/Container";
 
 function App() {
   const [startGame, setStartGame] = useState(true);
-  const [NewGameModal, setNewGameModal] = useState(false);
+  const [newGameModal, setNewGameModal] = useState(false);
   const [showRulesModal, setShowRulesModal] = useState(false);
   const [selectedDifficulty, setSelectedDifficulty] = useState(null);
   const [username, setUsername] = useState(""); // State to store the username
+  const [IAPlayerScore, setIAPlayerScore] = useState([]);
+  const [roundNumber, setRoundNumber] = useState();
+  const [score, setScore] = useState();
+
+  // Function to update scores for all players
+  const updateIAPlayerScore = (newIAPlayerScore) => {
+    setIAPlayerScore(newIAPlayerScore);
+  };
+
+  // Function to update round
+  const updateRound = (round) => {
+    setRoundNumber(round);
+  };
+
+  const sendScore = (score) => {
+    setScore(score);
+  };
+
   const handleStartGame = (username, difficulty) => {
     setUsername(username);
     setSelectedDifficulty(difficulty);
@@ -27,11 +45,6 @@ function App() {
     // Implement closing modal logic
     setNewGameModal(false);
     setShowRulesModal(false);
-  };
-
-  const handleSelectDifficulty = (difficulty) => {
-    setSelectedDifficulty(difficulty);
-    handleStartGame(); // You can modify this to pass username if needed
   };
 
   return (
@@ -65,7 +78,7 @@ function App() {
       {/* Footer */}
 
       <CreateNewname
-        isOpen={NewGameModal && !showRulesModal}
+        isOpen={newGameModal && !showRulesModal}
         onClose={closeModal}
         onStartGame={handleStartGame}
       />
@@ -75,9 +88,18 @@ function App() {
       {/* Other components can be rendered conditionally based on gameStarted */}
       {startGame && (
         <div style={{ marginTop: "10px" }}>
-          <DiceRollArea />
+          <DiceRollArea
+            selectedDifficulty={selectedDifficulty}
+            updateIAPlayerScore={updateIAPlayerScore}
+            updateRound={updateRound}
+            sendScore={sendScore}
+          />
           <div style={{ marginTop: "20px" }}>
-            <GameBoard />
+            <GameBoard
+              scores={IAPlayerScore}
+              round={roundNumber}
+              score={score}
+            />
           </div>
         </div>
       )}

@@ -6,6 +6,8 @@ import { Grid } from "@mui/material";
 import { Card } from "@mui/material";
 import { Typography } from "@mui/material";
 import { CardContent } from "@mui/material";
+import { Modal } from "@mui/material";
+import Emoji from "react-emojis";
 
 const tablesData = [
   {
@@ -45,7 +47,74 @@ const tablesData = [
     ],
   },
 ];
-const GameBoard = () => {
+
+const tableWinners = [];
+const playerWinners = [];
+const GameBoard = ({ scores, round, score }) => {
+  const [updatedTablesData, setUpdatedTablesData] = useState(tablesData);
+  const [roundWinnerPlayer, setRoundWinnerPlayer] = useState("");
+  const [roundWinnerTable, setRoundWinnerTable] = useState("");
+  const [nextRoundModalOpen, setNextRoundModalOpen] = useState(false);
+
+  useEffect(() => {
+    // Calculate the accumulated scores
+    const accumulatedScores = scores.reduce(
+      (acc, score, index) => {
+        const tableIndex = Math.floor(index / 4);
+        const playerIndex = index % 4;
+        acc[tableIndex][playerIndex].score += score;
+        return acc;
+      },
+      [...tablesData.map((table) => table.players)]
+    );
+
+    const winner = checkWinner(accumulatedScores);
+    console.log(accumulatedScores);
+    setUpdatedTablesData((prevData) =>
+      prevData.map((table, index) => ({
+        ...table,
+        players: table.players.map((player, playerIndex) => ({
+          ...player,
+          score: accumulatedScores[index][playerIndex].score,
+        })),
+      }))
+    );
+    if (winner) {
+      setRoundWinnerPlayer(winner.player.name);
+      playerWinners.push(winner.player.name);
+      setRoundWinnerTable(winner.tableName);
+      tableWinners.push(winner.tableName);
+    } else {
+    }
+  }, [round, scores]);
+
+  const checkWinner = (accumulatedScores) => {
+    for (const [tableIndex, table] of accumulatedScores.entries()) {
+      for (const [playerIndex, player] of table.entries()) {
+        if (player.score >= 21 || score >= 21) {
+          // Set array intial values
+          setNextRoundModalOpen(true);
+          accumulatedScores.forEach((table) => {
+            table.forEach((player) => {
+              player.score = 0;
+            });
+          });
+          return {
+            player: player,
+            tableName: tablesData[tableIndex].table,
+          }; // Return the winner object
+        }
+      }
+    }
+    return null; // No winner found
+  };
+
+  const handleCloseWinnerModal = () => {
+    setNextRoundModalOpen(false);
+  };
+  console.log(tableWinners);
+  console.log(playerWinners);
+
   return (
     <Box
       sx={{
@@ -58,17 +127,17 @@ const GameBoard = () => {
       <h3>GameBoard</h3>
       <Grid container spacing={0}>
         <Grid item xs={4} container justifyContent="center" alignItems="center">
-          <h4>Round: </h4>
+          <h4>Round: {round}</h4>
         </Grid>
         <Grid item xs={4} container justifyContent="center" alignItems="center">
-          <h4>Previous round winner (player): </h4>
+          <h4>Previous round winner (player): {roundWinnerPlayer}</h4>
         </Grid>
         <Grid item xs={4} container justifyContent="center" alignItems="center">
-          <h4>Previous round winner (table): </h4>
+          <h4>Previous round winner (table): {roundWinnerTable}</h4>
         </Grid>
       </Grid>
       <Grid container spacing={2} justifyContent="space-around">
-        {tablesData.map((table, index) => (
+        {updatedTablesData.map((table, index) => (
           <Grid item key={index} xs={12} sm={6} md={3}>
             <Card
               sx={{
@@ -90,10 +159,54 @@ const GameBoard = () => {
           </Grid>
         ))}
       </Grid>
+      <Modal
+        open={nextRoundModalOpen}
+        onClose={handleCloseWinnerModal}
+        aria-labelledby="winner-modal-title"
+        aria-describedby="winner-modal-description"
+      >
+        <Box
+          sx={{
+            position: "absolute",
+            width: 200,
+            color: "white",
+            bgcolor: "rgb(8, 76, 97)",
+            borderRadius: "5px",
+            boxShadow: 24,
+            p: 4,
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            textAlign: "center",
+          }}
+        >
+          <h3>Round {round} over!</h3>
+
+          <h3>Winner: </h3>
+          <h4 id="winner-modal-description">
+            <Emoji emoji="confetti-ball" size="20" />
+            Player: {roundWinnerPlayer}
+            <Emoji emoji="confetti-ball" size="20" />
+          </h4>
+          <h4>
+            <Emoji emoji="confetti-ball" size="20" />
+            Table: {roundWinnerTable}
+            <Emoji emoji="confetti-ball" size="20" />
+          </h4>
+          <button
+            className="close-modal-button"
+            onClick={handleCloseWinnerModal}
+          >
+            Next Round!
+          </button>
+        </Box>
+      </Modal>
     </Box>
   );
 };
 
-GameBoard.propTypes = {};
+GameBoard.propTypes = {
+  scores: PropTypes.arrayOf(PropTypes.number).isRequired,
+};
 
 export default GameBoard;

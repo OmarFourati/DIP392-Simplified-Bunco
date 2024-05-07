@@ -1,1 +1,20 @@
-.GameBoard {}
+.GameBoard {
+}
+.close-modal-button {
+  background-color: #db3a34;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.modal {
+  position: "absolute";
+  background-color: rgb(8, 76, 97);
+  color: #ffffff;
+  padding: 15px;
+  border-radius: 8px;
+  text-align: center;
+}
