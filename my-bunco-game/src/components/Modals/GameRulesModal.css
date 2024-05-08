@@ -1,3 +1,7 @@
+.rule li.highlighted {
+  font-weight: bold;
+  color: #f7b735; /* Blue color */
+}
 .modal-overlay {
   position: fixed;
   top: 0;

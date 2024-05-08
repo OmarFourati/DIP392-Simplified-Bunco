@@ -19,9 +19,9 @@ const GameRulesModal = ({ isOpen, onClose }) => {
           </p>
         </div>
         <div className="rule">
-          <p>Here are the basic rules:</p>
+          <p>Here are the basic rules and gameplay:</p>
           <ul>
-            <li>Players take turns rolling three dice per round.</li>
+            <li>Player rolls three dice per round.</li>
             <li>The target number changes each round (1 to 6).</li>
             <li>
               Players score points by rolling matches to the target number.
@@ -31,6 +31,18 @@ const GameRulesModal = ({ isOpen, onClose }) => {
               target number.
             </li>
             <li>The game typically consists of 6 rounds.</li>
+          </ul>
+          <p>Exact points calulcations: </p>
+          <ul>
+            <li className="highlighted">
+              1 Point : Dice value matches round number
+            </li>
+            <li className="highlighted">
+              5 Points : Three Dice matching each other BUT not the round number
+            </li>
+            <li className="highlighted">
+              21 Points : Three Dice matching each other AND the round number
+            </li>
           </ul>
         </div>
         <button className="close-button" onClick={onClose}>
