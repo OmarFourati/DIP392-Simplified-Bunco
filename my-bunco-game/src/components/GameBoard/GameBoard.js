@@ -153,11 +153,11 @@ const GameBoard = ({
       sx={{
         backgroundColor: "white",
         borderRadius: "10px", // Adjust the border radius as needed
-        padding: "5px 5px 15px 5px", // Adjust the padding as needed
+        padding: "5px 3px 15px 3px", // Adjust the padding as needed
         width: "100%", // Take full width of the parent container
       }}
     >
-      <h3>GameBoard</h3>
+      <h3 style={{ paddingLeft: "5px" }}>GameBoard</h3>
       <Grid container spacing={0}>
         <Grid item xs={4} container justifyContent="center" alignItems="center">
           <h4>Round: {round}</h4>

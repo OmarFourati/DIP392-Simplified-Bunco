@@ -125,7 +125,7 @@ function App() {
             sx={{
               backgroundColor: "white",
               borderRadius: "10px", // Adjust the border radius as needed
-              padding: "5px 3px 0px 5px", // Adjust the padding as needed
+              padding: "5px 3px 2px 3px", // Adjust the padding as needed
               width: "100%", // Take full width of the parent container
             }}
           >

@@ -64,8 +64,6 @@
 }
 
 .footer {
-  width: 100%;
-  display: flex;
-  justify-content: flex-end; /* Ändern Sie die Ausrichtung auf flex-end, um die Buttons nach rechts zu verschieben */
-  padding: 20px 0;
+  /* Ändern Sie die Ausrichtung auf flex-end, um die Buttons nach rechts zu verschieben */
+  padding-top: 20px;
 }

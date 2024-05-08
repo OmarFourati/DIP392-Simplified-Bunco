@@ -34,13 +34,13 @@ const FinalScoreTable = ({ finalWinnerPlayer, finalWinnerTable }) => {
       sx={{
         backgroundColor: "white",
         borderRadius: "10px", // Adjust the border radius as needed
-        padding: "0px 5px 10px 5px", // Adjust the padding as needed
+        padding: "0px 3px 10px 3px", // Adjust the padding as needed
         width: "100%", // Take full width of the parent container
       }}
     >
       <Grid container spacing={0}>
         <Grid item xs={12}>
-          <h3>Final Scores</h3>
+          <h3 style={{ paddingLeft: "5px" }}>Final Scores</h3>
         </Grid>
       </Grid>
       <Grid container spacing={2} justifyContent={"space-around"}>
