@@ -7,7 +7,6 @@ import { Card } from "@mui/material";
 import { Typography } from "@mui/material";
 import { CardContent } from "@mui/material";
 import { Modal } from "@mui/material";
-import Emoji from "react-emojis";
 
 let tablesData = [
   {
@@ -214,7 +213,6 @@ const GameBoard = ({
             textAlign: "center",
           }}
         >
-          <Emoji emoji="confetti-ball" size="20" />
           <h3>Final Round is over! Congratulations to the winners!</h3>
           <button
             className="close-modal-button"
@@ -248,16 +246,8 @@ const GameBoard = ({
           <h3>Round {round - 1} over!</h3>
 
           <h3>Winner: </h3>
-          <h4 id="winner-modal-description">
-            <Emoji emoji="confetti-ball" size="20" />
-            Player: {roundWinnerPlayer}
-            <Emoji emoji="confetti-ball" size="20" />
-          </h4>
-          <h4>
-            <Emoji emoji="confetti-ball" size="20" />
-            Table: {roundWinnerTable}
-            <Emoji emoji="confetti-ball" size="20" />
-          </h4>
+          <h4 id="winner-modal-description">Player: {roundWinnerPlayer}</h4>
+          <h4>Table: {roundWinnerTable}</h4>
           <button
             className="close-modal-button"
             onClick={handleCloseWinnerModal}
