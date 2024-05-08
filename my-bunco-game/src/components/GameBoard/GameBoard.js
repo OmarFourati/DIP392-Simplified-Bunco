@@ -89,11 +89,10 @@ const GameBoard = ({
               <span
                 style={{
                   color: "#db3a34",
-                  fontSize: "larger",
                   fontWeight: "bold",
                 }}
               >
-                {username}
+                {username} (You)
               </span>
             ) : (
               player.name
@@ -206,7 +205,7 @@ const GameBoard = ({
             width: 200,
             color: "white",
             bgcolor: "rgb(8, 76, 97)",
-            borderRadius: "5px",
+            borderRadius: "10px",
             boxShadow: 24,
             p: 4,
             top: "50%",
@@ -237,7 +236,7 @@ const GameBoard = ({
             width: 200,
             color: "white",
             bgcolor: "rgb(8, 76, 97)",
-            borderRadius: "5px",
+            borderRadius: "10px",
             boxShadow: 24,
             p: 4,
             top: "50%",

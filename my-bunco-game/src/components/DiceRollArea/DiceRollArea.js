@@ -156,9 +156,15 @@ const DiceRollArea = ({
             {chosenDices.map((dice, index) => (
               <img className="dice-img" src={dice} alt={""} key={index} />
             ))}
-            <button onClick={getRandomDiceImages} className="button-roll-area">
-              Roll Dice
-            </button>
+            <Grid item xs={6}>
+              <button
+                onClick={getRandomDiceImages}
+                className="button-roll-area"
+                style={{ margin: "0 auto" }}
+              >
+                Roll Dice
+              </button>
+            </Grid>
           </div>
         </Grid>
         <Grid item xs={6}>
@@ -167,7 +173,7 @@ const DiceRollArea = ({
             sx={{
               width: "100px",
               height: "50px",
-              borderRadius: "5px",
+              borderRadius: "10px",
               border: "",
               boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
               display: "flex",

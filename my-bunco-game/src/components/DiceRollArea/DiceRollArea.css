@@ -10,12 +10,12 @@
   background-color: #f7b735;
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
   padding: 10px 20px;
   margin-left: 5px;
   cursor: pointer;
 }
 .dices-buttons-container {
-  display: flex;
   align-items: center;
+  margin-left: 5px;
 }
