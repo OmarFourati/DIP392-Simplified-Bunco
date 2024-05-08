@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import "./DiceRollArea.css";
-import { Box } from "@mui/material";
+import { Box, CircularProgress } from "@mui/material";
 import { Grid } from "@mui/material";
 
 import dices_1 from "../../assets/dice_1.png";
@@ -71,8 +71,6 @@ const DiceRollArea = ({
     const points = calculatePoints(dice_value_rdm, roundNumber);
     setScoredPoints((prevScoredPoints) => prevScoredPoints + points); // Update the scored points
     calculate_player_scores();
-
-    console.log(overall_player_score);
     if (
       scoredPoints === 21 ||
       overall_player_score.some((score) => score >= 21)
@@ -105,16 +103,14 @@ const DiceRollArea = ({
     }
   }
   updateIAPlayerScore(IAPlayerScore);
+  console.log(roundNumber);
   function handleNextRound() {
     if (roundNumber < 7) {
       setRoundNumber(roundNumber + 1); // Increment round number if less than 6
       setScoredPoints(0);
       overall_player_score = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-      alert("Next round started");
-    } else {
-      // Handle case when maximum rounds reached
-      alert("Maximum rounds reached!");
     }
+    console.log(roundNumber);
   }
   updateRound(roundNumber);
 
@@ -162,9 +158,6 @@ const DiceRollArea = ({
             ))}
             <button onClick={getRandomDiceImages} className="button-roll-area">
               Roll Dice
-            </button>
-            <button onClick={handleNextRound} className="button-roll-area">
-              Next Round
             </button>
           </div>
         </Grid>
