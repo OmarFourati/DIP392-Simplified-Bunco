@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/OmarFourati/DIP392-Simplified-Bunco/my-bunco-game/static/css/main.fe2e92d0.css",
+    "main.js": "/OmarFourati/DIP392-Simplified-Bunco/my-bunco-game/static/js/main.a38b689e.js",
+    "static/js/453.c82641cd.chunk.js": "/OmarFourati/DIP392-Simplified-Bunco/my-bunco-game/static/js/453.c82641cd.chunk.js",
+    "static/media/dice_4.png": "/OmarFourati/DIP392-Simplified-Bunco/my-bunco-game/static/media/dice_4.5aa531e3a82fb0cde6ba.png",
+    "index.html": "/OmarFourati/DIP392-Simplified-Bunco/my-bunco-game/index.html",
+    "main.fe2e92d0.css.map": "/OmarFourati/DIP392-Simplified-Bunco/my-bunco-game/static/css/main.fe2e92d0.css.map",
+    "main.a38b689e.js.map": "/OmarFourati/DIP392-Simplified-Bunco/my-bunco-game/static/js/main.a38b689e.js.map",
+    "453.c82641cd.chunk.js.map": "/OmarFourati/DIP392-Simplified-Bunco/my-bunco-game/static/js/453.c82641cd.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.fe2e92d0.css",
+    "static/js/main.a38b689e.js"
+  ]
+}
