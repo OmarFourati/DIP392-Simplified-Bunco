@@ -13,22 +13,56 @@ import dices_6 from "../../assets/dice_6.png";
 
 const dices = [dices_1, dices_2, dices_3, dices_4, dices_5, dices_6];
 const dice_values = [1, 2, 3, 4, 5, 6];
+let overall_player_score = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
-const DiceRollArea = () => {
+const DiceRollArea = ({
+  selectedDifficulty,
+  updateIAPlayerScore,
+  updateRound,
+  sendScore,
+}) => {
   const [chosenDices, setChosenDices] = useState([]);
   const [chosenDicesValues, setChosenDicesValues] = useState([]);
   const [roundNumber, setRoundNumber] = useState(1);
   const [scoredPoints, setScoredPoints] = useState(0);
+  const [IAPlayerScore, setIAPlayerScore] = useState([]);
 
-  useEffect(() => {
-    getRandomDiceImages();
-  }, []);
+  // useEffect(() => {
+  //   getRandomDiceImages();
+  // }, []);
 
   function getRandomDiceImages() {
+    const difficulty = selectedDifficulty;
+    const round = roundNumber;
     const tempChosenDices = [];
     const dice_value_rdm = [];
     for (let i = 0; i < 3; i++) {
-      const randDiceIndex = Math.floor(Math.random() * dices.length);
+      let randDiceIndex = Math.floor(Math.random() * dices.length);
+      const chance = Math.random(); // Random chance between 0 and 1
+      if (difficulty === "easy") {
+        // Always choose a random dice number for easy difficulty
+        randDiceIndex = Math.floor(Math.random() * dices.length);
+      } else if (difficulty === "medium") {
+        // Reduce the probability for medium difficulty
+        if (chance < 0.9) {
+          randDiceIndex = Math.floor(Math.random() * dices.length);
+        } else {
+          // Choose a dice number that's not equal to the round number
+          do {
+            randDiceIndex = Math.floor(Math.random() * dices.length);
+          } while (dice_values[randDiceIndex] === round);
+        }
+      } else if (difficulty === "hard") {
+        // Reduce the probability for hard difficulty
+        if (chance < 0.8) {
+          randDiceIndex = Math.floor(Math.random() * dices.length);
+        } else {
+          // Choose a dice number that's not equal to the round number
+          do {
+            randDiceIndex = Math.floor(Math.random() * dices.length);
+          } while (dice_values[randDiceIndex] === round);
+        }
+      }
       tempChosenDices.push(dices[randDiceIndex]);
       dice_value_rdm.push(dice_values[randDiceIndex]);
     }
@@ -36,49 +70,85 @@ const DiceRollArea = () => {
     setChosenDicesValues(dice_value_rdm);
     const points = calculatePoints(dice_value_rdm, roundNumber);
     setScoredPoints((prevScoredPoints) => prevScoredPoints + points); // Update the scored points
-  }
+    calculate_player_scores();
 
+    console.log(overall_player_score);
+    if (
+      scoredPoints === 21 ||
+      overall_player_score.some((score) => score >= 21)
+    ) {
+      handleNextRound();
+    }
+  }
+  sendScore(scoredPoints);
+  // console.log(scoredPoints);
+  // console.log(overall_player_score);
+
+  function calculate_player_scores() {
+    let track_other_player_score = [];
+    let otherPlayerScore = [];
+    const round = roundNumber;
+    for (let index = 0; index < 16; index++) {
+      const dice_value_rdm = [];
+      for (let i = 0; i < 3; i++) {
+        let randDiceIndex = Math.floor(Math.random() * dices.length);
+        dice_value_rdm.push(dice_values[randDiceIndex]);
+      }
+      otherPlayerScore.push(calculatePoints(dice_value_rdm, round));
+      track_other_player_score.push(calculatePoints(dice_value_rdm, round));
+    }
+    setIAPlayerScore(otherPlayerScore);
+
+    // keep track of scores
+    for (let index = 0; index < track_other_player_score.length; index++) {
+      overall_player_score[index] += track_other_player_score[index];
+    }
+  }
+  updateIAPlayerScore(IAPlayerScore);
   function handleNextRound() {
-    if (roundNumber < 6) {
+    if (roundNumber < 7) {
       setRoundNumber(roundNumber + 1); // Increment round number if less than 6
+      setScoredPoints(0);
+      overall_player_score = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+      alert("Next round started");
     } else {
       // Handle case when maximum rounds reached
       alert("Maximum rounds reached!");
     }
   }
+  updateRound(roundNumber);
 
   function calculatePoints(diceValues, roundNumber) {
     const [dice1, dice2, dice3] = diceValues;
     let points = 0;
 
-    // Award 1 point for each die rolled that matches the current round number
-    if (dice1 === roundNumber) points++;
-    if (dice2 === roundNumber) points++;
-    if (dice3 === roundNumber) points++;
-
-    // Award 5 points if all three dice match each other but not the current round number
-    if (dice1 === dice2 && dice2 === dice3 && dice1 !== roundNumber) {
-      points += 5;
-    }
-
-    // Award 21 points if all three dice match the current round number (a "bunco"),
-    // but limit total points to 21
+    // Check for bunco first (all three dice match the round number)
     if (
       dice1 === roundNumber &&
       dice2 === roundNumber &&
       dice3 === roundNumber
     ) {
-      points += 21;
+      points = 21; // Award 21 points for bunco and stop further checks
+    } else {
+      // Check for other scoring conditions if no bunco
+      if (dice1 === dice2 && dice2 === dice3 && dice1 !== roundNumber) {
+        points = 5; // Award 5 points for three matching dice (not round number)
+      } else {
+        // Check for individual matching dice (optional)
+        // You can uncomment this block to award 1 point for each matching die
+        if (dice1 === roundNumber) points++;
+        if (dice2 === roundNumber) points++;
+        if (dice3 === roundNumber) points++;
+      }
     }
     return points;
   }
-
   return (
     <Box
       sx={{
         backgroundColor: "white",
         borderRadius: "10px", // Adjust the border radius as needed
-        padding: "0px 5px 15px 7px", // Adjust the padding as needed
+        padding: "0px 5px 10px 5px", // Adjust the padding as needed
         width: "100%", // Take full width of the parent container
       }}
     >
@@ -123,8 +193,8 @@ const DiceRollArea = () => {
   );
 };
 
-DiceRollArea.propTypes = {};
-
-DiceRollArea.defaultProps = {};
+DiceRollArea.propTypes = {
+  selectedDifficulty: PropTypes.string,
+};
 
 export default DiceRollArea;
