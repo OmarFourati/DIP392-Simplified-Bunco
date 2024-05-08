@@ -1,6 +1,7 @@
 // App.js
 import React, { useState } from "react";
 import "./App.css";
+import { FaDiceD20 } from "react-icons/fa";
 import DiceRollArea from "./components/DiceRollArea/DiceRollArea";
 import FinalScoreTable from "./components/FinalScoreTable/FinalScoreTable";
 import GameBoard from "./components/GameBoard/GameBoard";
@@ -61,7 +62,9 @@ function App() {
       <header className="header">
         {/* Logo and App Name */}
         <div className="app-title">
-          <div className="bunco-logo"></div>
+          <div className="bunco-logo">
+            <FaDiceD20 />
+          </div>
           <div className="bunco-title">
             <p>Bunco</p>
           </div>
