@@ -13,37 +13,37 @@ let tablesData = [
   {
     table: "Table 1",
     players: [
-      { name: "Alice", score: 0 },
-      { name: "Bob", score: 0 },
-      { name: "Charlie", score: 0 },
-      { name: "David", score: 0 },
+      { name: "Omar", score: 0 },
+      { name: "Magnus", score: 0 },
+      { name: "Youssef", score: 0 },
+      { name: "Sysou", score: 0 },
     ],
   },
   {
     table: "Table 2",
     players: [
-      { name: "Eva", score: 0 },
-      { name: "Frank", score: 0 },
-      { name: "Grace", score: 0 },
-      { name: "Hannah", score: 0 },
+      { name: "Paul", score: 0 },
+      { name: "Maximilian", score: 0 },
+      { name: "Helena", score: 0 },
+      { name: "Hanna", score: 0 },
     ],
   },
   {
     table: "Table 3",
     players: [
-      { name: "Isaac", score: 0 },
-      { name: "Jack", score: 0 },
-      { name: "Kelly", score: 0 },
-      { name: "Liam", score: 0 },
+      { name: "Esther", score: 0 },
+      { name: "Ezzy", score: 0 },
+      { name: "Leonie", score: 0 },
+      { name: "Vincent", score: 0 },
     ],
   },
   {
     table: "Table 4",
     players: [
-      { name: "Mary", score: 0 },
-      { name: "Nathan", score: 0 },
-      { name: "Olivia", score: 0 },
-      { name: "Peter", score: 0 },
+      { name: "Cay", score: 0 },
+      { name: "Laurin", score: 0 },
+      { name: "Jakob", score: 0 },
+      { name: "Ali", score: 0 },
     ],
   },
 ];
