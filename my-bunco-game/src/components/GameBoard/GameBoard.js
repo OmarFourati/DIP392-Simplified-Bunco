@@ -179,14 +179,25 @@ const GameBoard = ({
             >
               <CardContent>
                 <h3>{table.table}</h3>
-                {table.players.map((player, index) => (
-                  <div key={index}>
-                    <Typography variant="subtitle1">{player.name}</Typography>
-                    <Typography variant="subtitle2">
-                      Score: {player.score}
-                    </Typography>
-                  </div>
-                ))}
+                <Grid container spacing={2} alignItems="center">
+                  <Grid item xs={12}></Grid>
+                  {table.players.map((player, index) => (
+                    <Grid item xs={12} key={index}>
+                      <Grid container spacing={2} alignItems="center">
+                        <Grid item xs={6}>
+                          <Typography variant="subtitle1">
+                            {player.name}
+                          </Typography>
+                        </Grid>
+                        <Grid item xs={6}>
+                          <Typography variant="subtitle2">
+                            Score: {player.score}
+                          </Typography>
+                        </Grid>
+                      </Grid>
+                    </Grid>
+                  ))}
+                </Grid>
               </CardContent>
             </Card>
           </Grid>
