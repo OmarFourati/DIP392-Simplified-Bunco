@@ -22,7 +22,7 @@ let tablesData = [
   {
     table: "Table 2",
     players: [
-      { name: "Paul", score: 0 },
+      { name: "Omar", score: 0 },
       { name: "Maximilian", score: 0 },
       { name: "Helena", score: 0 },
       { name: "Hanna", score: 0 },
