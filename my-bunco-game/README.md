@@ -13,7 +13,7 @@ Follow these steps to set up the Bunco Game on your local machine:
 1. **Clone the Repository:**
 
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/OmarFourati/DIP392-Simplified-Bunco.git
 
    ```
 
@@ -36,7 +36,7 @@ You can run the Bunco Game System either directly via the web or locally using n
 ## Web-Application:
 
 Access Online:
-Open Simplified Bunco[www.simplified-bunco.netlifly.app] in your web browser.
+Open [Simplified Bunco](www.simplified-bunco.netlifly.app) in your web browser.
 
 # Interacting with the System
 
