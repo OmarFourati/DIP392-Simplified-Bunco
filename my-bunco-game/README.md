@@ -1,70 +1,64 @@
-# Getting Started with Create React App
+# Simplified Bunco Game
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to the Simplified Bunco Game! This interactive platform allows users to enjoy a simplified version of the classic dice game, Bunco. Follow the instructions below to set up and start playing.
 
-## Available Scripts
+## Getting Started
 
-In the project directory, you can run:
+Before you begin, ensure that Node.js and npm (Node Package Manager) are installed on your computer. If not installed, you can download them from [nodejs.org](https://nodejs.org).
 
-### `npm start`
+## Installation
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Follow these steps to set up the Bunco Game on your local machine:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+1. **Clone the Repository:**
 
-### `npm test`
+   ```bash
+   git clone <repository-url>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+   ```
 
-### `npm run build`
+2. **Navigate to the Project Directory:**
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+   ```bash
+   cd my-bunco-game
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+   ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+3. **Install dependencies:**
+   ```bash
+   npm install
+   ```
 
-### `npm run eject`
+# Running the Application
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+You can run the Bunco Game System either directly via the web or locally using npm.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Web-Application:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Access Online:
+Open Simplified Bunco[www.simplified-bunco.netlifly.app] in your web browser.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+# Interacting with the System
 
-## Learn More
+### New Game
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+1. **Click the "New Game" button in the header to start a new game.**
+2. **In the modal window, enter your username and select a difficulty level (Easy, Medium, or Hard).**
+3. **Click "Start Game" to begin playing.**
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Game Rules
 
-### Code Splitting
+1. **Click the "Game Rules" button in the header to view the rules.**
+2. **Read the game rules and close the modal by clicking "Close".**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Gameplay
 
-### Analyzing the Bundle Size
+1. **Once the game starts, the dice roll area and game board components will be displayed.**
+2. **Aim to match the target number for each round, scoring points according to the rules.**
+3. **Click "Start Game" to begin playing.**
+4. **The game progresses through multiple rounds, and winners are declared at the end.**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### Final Results
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1. **Upon completion of all rounds, the final results modal will display automatically.**
+2. **This modal shows the winners of the game, both players and tables.**
