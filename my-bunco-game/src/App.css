@@ -72,7 +72,7 @@
 }
 
 .difficulty-name p {
-  display: inline;
+  display: inline-flex;
   font-weight: bold;
 }
 
