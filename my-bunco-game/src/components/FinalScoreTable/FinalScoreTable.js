@@ -24,6 +24,13 @@ const FinalScoreTable = ({ finalWinnerPlayer, finalWinnerTable }) => {
     return playerCounts;
   };
 
+  const sortedTableWins = Array.from(countTableWins()).sort(
+    (a, b) => b[1] - a[1]
+  );
+  const sortedPlayerWins = Array.from(countPlayerWins()).sort(
+    (a, b) => b[1] - a[1]
+  );
+
   const maxTableWins = Math.max(...countTableWins().values());
   const maxPlayerWins = Math.max(...countPlayerWins().values());
 
@@ -55,8 +62,7 @@ const FinalScoreTable = ({ finalWinnerPlayer, finalWinnerTable }) => {
               <h3>Tables</h3>
               {finalWinnerTable?.length === 6 && (
                 <div>
-                  {/* Count occurrences of each table */}
-                  {Array.from(countTableWins()).map(([table, count], index) => (
+                  {sortedTableWins.map(([table, count], index) => (
                     <div
                       key={index}
                       className={count === maxTableWins ? "highlight" : ""}
@@ -80,17 +86,14 @@ const FinalScoreTable = ({ finalWinnerPlayer, finalWinnerTable }) => {
               <h3>Players</h3>
               {finalWinnerPlayer?.length === 6 && (
                 <div>
-                  {/* Count occurrences of each player */}
-                  {Array.from(countPlayerWins()).map(
-                    ([player, count], index) => (
-                      <div
-                        key={index}
-                        className={count === maxPlayerWins ? "highlight" : ""}
-                      >
-                        {player} - Wins: {count}
-                      </div>
-                    )
-                  )}
+                  {sortedPlayerWins.map(([player, count], index) => (
+                    <div
+                      key={index}
+                      className={count === maxPlayerWins ? "highlight" : ""}
+                    >
+                      {player} - Wins: {count}
+                    </div>
+                  ))}
                 </div>
               )}
             </CardContent>
