@@ -14,6 +14,16 @@ const CreateNewGame = ({ isOpen, onClose, onStartGame }) => {
   };
 
   const handleStartGame = () => {
+    if (username === "") {
+      alert("You must input a username!");
+    }
+    if (username.length < 3 || username.length > 10) {
+      alert("Username must be between 3 and 15 characters.");
+      return;
+    }
+    if (!selectedDifficulty) {
+      alert("You must chose a difficulty!");
+    }
     if (username && selectedDifficulty) {
       onStartGame(username, selectedDifficulty);
       setUsername("");
