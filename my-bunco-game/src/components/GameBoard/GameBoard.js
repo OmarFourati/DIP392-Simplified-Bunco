@@ -269,12 +269,6 @@ const GameBoard = ({
             Table: {roundWinnerTable}
             <Emoji emoji="confetti-ball" size="20" />
           </h4>
-          <button
-            className="close-modal-button"
-            onClick={handleCloseWinnerModal}
-          >
-            Next Round!
-          </button>
         </Box>
       </Modal>
     </Box>

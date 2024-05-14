@@ -3,7 +3,7 @@
 
 /* General styles */
 .App {
-  background-color: #171e2b;
+  background-color: rgb(5, 48, 61);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
