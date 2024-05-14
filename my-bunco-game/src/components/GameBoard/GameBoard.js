@@ -159,7 +159,11 @@ const GameBoard = ({
       <h3 style={{ paddingLeft: "5px" }}>GameBoard</h3>
       <Grid container spacing={0}>
         <Grid item xs={4} container justifyContent="center" alignItems="center">
-          <h4>Round: {round}</h4>
+          {round !== 7 ? (
+            <h4>Round: {round}</h4>
+          ) : (
+            <h4>Round: Final round over!</h4>
+          )}
         </Grid>
         <Grid item xs={4} container justifyContent="center" alignItems="center">
           <h4>Previous round winner (player): {roundWinnerPlayer}</h4>

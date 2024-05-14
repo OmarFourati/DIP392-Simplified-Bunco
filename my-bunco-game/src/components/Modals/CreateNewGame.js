@@ -5,6 +5,12 @@ const CreateNewGame = ({ isOpen, onClose, onStartGame }) => {
   const [username, setUsername] = useState("");
   const [selectedDifficulty, setSelectedDifficulty] = useState("");
 
+  const resetStateAndClose = () => {
+    setUsername("");
+    setSelectedDifficulty("");
+    onClose();
+  };
+
   const handleInputChange = (event) => {
     setUsername(event.target.value);
   };
@@ -28,17 +34,15 @@ const CreateNewGame = ({ isOpen, onClose, onStartGame }) => {
       onStartGame(username, selectedDifficulty);
       setUsername("");
       setSelectedDifficulty("");
-    } else {
-      alert("Please enter a username and select a difficulty.");
     }
   };
 
   if (!isOpen) return null;
 
   return (
-    <div className="modal-overlay">
-      <div className="modal">
-        <span className="close-icon" onClick={onClose}>
+    <div className="modal-overlay" onClick={resetStateAndClose}>
+      <div className="modal" onClick={(e) => e.stopPropagation()}>
+        <span className="close-icon" onClick={resetStateAndClose}>
           ×
         </span>
         <h2>Welcome to Simplified Bunco!</h2>

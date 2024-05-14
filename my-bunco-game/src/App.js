@@ -78,7 +78,16 @@ function App() {
           <button onClick={() => setShowRulesModal(true)} className="button">
             Game Rules
           </button>
-          {username && <p className="player-name">Player : {username}</p>}
+          {username && (
+            <p className="player-name">
+              Player : <p>{username}</p>
+            </p>
+          )}
+          {selectedDifficulty && (
+            <p className="difficulty-name">
+              Difficulty : <p>{selectedDifficulty}</p>
+            </p>
+          )}
         </div>
       </header>
 

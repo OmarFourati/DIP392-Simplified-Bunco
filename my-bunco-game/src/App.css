@@ -59,7 +59,20 @@
 }
 
 .player-name {
-  padding-left: 10px;
+  padding-left: 20px;
+}
+
+.player-name p {
+  display: inline;
+  font-weight: bold;
+}
+
+.difficulty-name {
+  padding-left: 20px;
+}
+
+.difficulty-name p {
+  display: inline;
   font-weight: bold;
 }
 
